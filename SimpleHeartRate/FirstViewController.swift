@@ -17,12 +17,12 @@ class FirstViewController: UIViewController,CBCentralManagerDelegate,CBPeriphera
     let heartRateServiceCBUUID = CBUUID(string: "0x180D")
     let heartRateMeasurementCharacteristicCBUUID = CBUUID(string: "2A37")
     
-    
     @IBOutlet weak var heartRateDisplay: UITextField!
-    
-    
-    //MARK:Actions
     @IBOutlet weak var test: UITextField!
+    
+    
+   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +31,8 @@ class FirstViewController: UIViewController,CBCentralManagerDelegate,CBPeriphera
         
         // Do any additional setup after loading the view.
     }
+    
+     //MARK:Actions
     @IBAction func scan(_ sender: Any) {
         NSLog("start scanning")
         manager.scanForPeripherals(withServices: [heartRateServiceCBUUID], options: nil)
