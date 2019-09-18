@@ -12,8 +12,8 @@ import UIKit
     var heartRateValue = [CGFloat]()
     override func draw(_ rect: CGRect) {
         //Draw upper and lower bounds
-        let heartRateUpperBoundHeight = bounds.height/5
-        let heartRateLowerBoundHeight = bounds.height*4/5
+        let heartRateUpperBoundHeight = bounds.height/10
+        let heartRateLowerBoundHeight = bounds.height*9/10
         //set upper bound line
         let heartRateUpperBoundPath = UIBezierPath()
         heartRateUpperBoundPath.move(to: CGPoint(x: CGFloat(0.0), y: heartRateUpperBoundHeight))
