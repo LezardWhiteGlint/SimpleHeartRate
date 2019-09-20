@@ -18,8 +18,14 @@ class FirstViewController: UIViewController,CBCentralManagerDelegate,CBPeriphera
     let heartRateServiceCBUUID = CBUUID(string: "0x180D")
     let heartRateMeasurementCharacteristicCBUUID = CBUUID(string: "2A37")
     var heartRateReading = 0
+    var heartRateLabel:UILabel!
+    var time:TimeInterval!
+    var timeInRange:TimeInterval!
+    
     @IBOutlet weak var heartRatePlotView: HeartRateView!
-
+    @IBOutlet weak var totalTime: UILabel!
+    @IBOutlet weak var timeInHeartRateRange: UILabel!
+    
     
     
    
@@ -27,19 +33,33 @@ class FirstViewController: UIViewController,CBCentralManagerDelegate,CBPeriphera
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //set bluetooth manager
         manager = CBCentralManager(delegate: self, queue: nil, options: nil)
-        print(heartRatePlotView.bounds.height)
+        //set heartRatePlotView's movable uilabel fro heart rate
+        heartRateLabel = UILabel(frame: CGRect(x: 100, y: 100, width: 80, height: 80))
+        heartRateLabel.text = "No Reading"
+        heartRateLabel.font = UIFont.systemFont(ofSize: CGFloat(50))
+        heartRateLabel.textColor = .green
+        heartRatePlotView.addSubview(heartRateLabel)
 
         
         
         
-        
-        // Do any additional setup after loading the view.
+
     }
     
     
      //MARK:Actions
-
+    @IBAction func start(_ sender: Any) {
+        time = TimeInterval()
+        timeInRange = TimeInterval()
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
+            self.time += 1
+            self.totalTime.text = self.time.stringDisplay()
+            self.timeInHeartRateRange.text = self.timeInRange.stringDisplay()
+        })
+    }
+    
     
     //MARK:delegates
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
@@ -87,7 +107,13 @@ class FirstViewController: UIViewController,CBCentralManagerDelegate,CBPeriphera
         heartRateReading = heartRate(from: characteristic)
         heartRatePlotView.heartRateValue.append(heartRateReading)
         if heartRateReading > 0{
+            heartRateLabel.frame.origin.x = heartRatePlotView.newCGPoint.x
+            heartRateLabel.frame.origin.y = heartRatePlotView.newCGPoint.y
+            heartRateLabel.text = String(heartRateReading)
             heartRatePlotView.setNeedsDisplay()
+        }
+        if heartRateReading < heartRatePlotView.higherHeartRateBound && heartRateReading > heartRatePlotView.lowerHeartRateBound{
+            timeInRange += 1
         }
         
     }
@@ -107,12 +133,25 @@ class FirstViewController: UIViewController,CBCentralManagerDelegate,CBPeriphera
             return (Int(byteArray[1]) << 8) + Int(byteArray[2])
         }
     }
-
+    
+    private func updateTimer(){
+        
+    }
     
 
-        
-        
-    
 
+
+}
+
+
+//MARK:Extentions
+extension TimeInterval{
+    func stringDisplay() -> String{
+        let time = Int(self)
+        let hour = time/3600
+        let minute = (time/60)%60
+        let second = time%60
+        return String(format:"%0.2d:%0.2d:%0.2d", hour,minute,second)
+    }
 }
 

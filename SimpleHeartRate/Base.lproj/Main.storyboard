@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -40,6 +38,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjt-5U-3zs">
                                         <rect key="frame" x="226" y="73" width="164" height="30"/>
                                         <state key="normal" title="Start"/>
+                                        <connections>
+                                            <action selector="start:" destination="9pv-A4-QxB" eventType="touchUpInside" id="eYK-ar-Eca"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIv-Ey-goB">
                                         <rect key="frame" x="294" y="37" width="72" height="21"/>
@@ -63,7 +64,7 @@
                                     <constraint firstAttribute="trailing" secondItem="bjt-5U-3zs" secondAttribute="trailing" constant="8" id="3d4-Xn-ozg"/>
                                     <constraint firstItem="sWP-u8-l8T" firstAttribute="top" secondItem="SYE-fy-tf2" secondAttribute="bottom" constant="8" id="9dd-dE-qIT"/>
                                     <constraint firstItem="bjt-5U-3zs" firstAttribute="top" secondItem="JIv-Ey-goB" secondAttribute="bottom" constant="15" id="D1q-tQ-ERe"/>
-                                    <constraint firstItem="JIv-Ey-goB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sWP-u8-l8T" secondAttribute="trailing" symbolic="YES" id="PrL-mR-6Lj"/>
+                                    <constraint firstItem="JIv-Ey-goB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sWP-u8-l8T" secondAttribute="trailing" constant="8" symbolic="YES" id="PrL-mR-6Lj"/>
                                     <constraint firstItem="9br-wY-RgW" firstAttribute="leading" secondItem="Im1-U1-uyd" secondAttribute="leading" constant="11" id="Rvc-Ca-xQN"/>
                                     <constraint firstItem="SYE-fy-tf2" firstAttribute="top" secondItem="Im1-U1-uyd" secondAttribute="top" constant="8" id="Zoh-Z8-NRU"/>
                                     <constraint firstItem="JIv-Ey-goB" firstAttribute="top" secondItem="idf-Vn-m4O" secondAttribute="bottom" constant="8" id="bgZ-tb-a89"/>
@@ -76,7 +77,7 @@
                                     <constraint firstItem="bjt-5U-3zs" firstAttribute="leading" secondItem="9br-wY-RgW" secondAttribute="trailing" constant="168" id="qcb-Jj-lKp"/>
                                     <constraint firstItem="9br-wY-RgW" firstAttribute="top" secondItem="sWP-u8-l8T" secondAttribute="bottom" constant="15" id="vo2-2E-Sd3"/>
                                     <constraint firstAttribute="bottom" secondItem="bjt-5U-3zs" secondAttribute="bottom" constant="41" id="wU3-z6-RVP"/>
-                                    <constraint firstItem="idf-Vn-m4O" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SYE-fy-tf2" secondAttribute="trailing" symbolic="YES" id="xdf-4i-fD0"/>
+                                    <constraint firstItem="idf-Vn-m4O" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SYE-fy-tf2" secondAttribute="trailing" constant="8" symbolic="YES" id="xdf-4i-fD0"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -95,6 +96,8 @@
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="heartRatePlotView" destination="SGL-54-nk7" id="KLn-Jm-HmP"/>
+                        <outlet property="timeInHeartRateRange" destination="JIv-Ey-goB" id="NaU-qp-bXO"/>
+                        <outlet property="totalTime" destination="idf-Vn-m4O" id="3eQ-uG-zfw"/>
                         <outlet property="view" destination="SGL-54-nk7" id="MGJ-Ws-nC9"/>
                     </connections>
                 </viewController>
@@ -111,7 +114,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="106.5" y="426.5" width="201.5" height="43"/>
+                                <rect key="frame" x="106" y="426.5" width="202" height="43"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
