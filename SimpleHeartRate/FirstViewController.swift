@@ -9,6 +9,7 @@
 import UIKit
 import CoreBluetooth
 
+
 class FirstViewController: UIViewController,CBCentralManagerDelegate,CBPeripheralDelegate {
     
     var manager:CBCentralManager!
@@ -16,7 +17,9 @@ class FirstViewController: UIViewController,CBCentralManagerDelegate,CBPeriphera
     var heartRatePeripheral:CBPeripheral!
     let heartRateServiceCBUUID = CBUUID(string: "0x180D")
     let heartRateMeasurementCharacteristicCBUUID = CBUUID(string: "2A37")
-    
+    var heartRateReading = 0
+    @IBOutlet weak var heartRatePlotView: HeartRateView!
+
     
     
    
@@ -25,10 +28,15 @@ class FirstViewController: UIViewController,CBCentralManagerDelegate,CBPeriphera
     override func viewDidLoad() {
         super.viewDidLoad()
         manager = CBCentralManager(delegate: self, queue: nil, options: nil)
-        manager.scanForPeripherals(withServices: [heartRateServiceCBUUID], options: nil)
+        print(heartRatePlotView.bounds.height)
+
+        
+        
+        
         
         // Do any additional setup after loading the view.
     }
+    
     
      //MARK:Actions
 
@@ -36,6 +44,7 @@ class FirstViewController: UIViewController,CBCentralManagerDelegate,CBPeriphera
     //MARK:delegates
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         NSLog("centralManagerDidUpdate")
+        manager.scanForPeripherals(withServices: [heartRateServiceCBUUID], options: nil)
     }
     
     
@@ -75,7 +84,12 @@ class FirstViewController: UIViewController,CBCentralManagerDelegate,CBPeriphera
     
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         print("didUpdateValueFor characteristic")
-        heartRateDisplay.text = String(heartRate(from: characteristic))
+        heartRateReading = heartRate(from: characteristic)
+        heartRatePlotView.heartRateValue.append(heartRateReading)
+        if heartRateReading > 0{
+            heartRatePlotView.setNeedsDisplay()
+        }
+        
     }
     
     
