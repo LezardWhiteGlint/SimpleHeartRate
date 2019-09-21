@@ -36,10 +36,10 @@ class FirstViewController: UIViewController,CBCentralManagerDelegate,CBPeriphera
         //set bluetooth manager
         manager = CBCentralManager(delegate: self, queue: nil, options: nil)
         //set heartRatePlotView's movable uilabel fro heart rate
-        heartRateLabel = UILabel(frame: CGRect(x: 100, y: 100, width: 80, height: 80))
+        heartRateLabel = UILabel(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
         heartRateLabel.text = "No Reading"
         heartRateLabel.font = UIFont.systemFont(ofSize: CGFloat(50))
-        heartRateLabel.textColor = .green
+        heartRateLabel.textColor = .blue
         heartRatePlotView.addSubview(heartRateLabel)
 
         
@@ -54,8 +54,14 @@ class FirstViewController: UIViewController,CBCentralManagerDelegate,CBPeriphera
         time = TimeInterval()
         timeInRange = TimeInterval()
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
+            //set normal timer
             self.time += 1
             self.totalTime.text = self.time.stringDisplay()
+            self.timeInHeartRateRange.text = self.timeInRange.stringDisplay()
+            //set heart rate timer
+            if self.heartRateReading < self.heartRatePlotView.higherHeartRateBound && self.heartRateReading > self.heartRatePlotView.lowerHeartRateBound{
+                self.timeInRange += 1
+            }
             self.timeInHeartRateRange.text = self.timeInRange.stringDisplay()
         })
     }
@@ -112,9 +118,15 @@ class FirstViewController: UIViewController,CBCentralManagerDelegate,CBPeriphera
             heartRateLabel.text = String(heartRateReading)
             heartRatePlotView.setNeedsDisplay()
         }
-        if heartRateReading < heartRatePlotView.higherHeartRateBound && heartRateReading > heartRatePlotView.lowerHeartRateBound{
-            timeInRange += 1
+        switch heartRateReading{
+        case 0..<heartRatePlotView.lowerHeartRateBound:
+            heartRateLabel.textColor = .blue
+        case heartRatePlotView.lowerHeartRateBound..<heartRatePlotView.higherHeartRateBound:
+            heartRateLabel.textColor = .green
+        default:
+            heartRateLabel.textColor = .red
         }
+
         
     }
     
