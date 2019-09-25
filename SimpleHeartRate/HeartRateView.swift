@@ -10,8 +10,8 @@ import UIKit
 
 class HeartRateView: UIView {
     var heartRateValue = [Int]()
-    let lowerHeartRateBound = 80
-    let higherHeartRateBound = 110
+    var lowerHeartRateBound = 115
+    var higherHeartRateBound = 135
     var newCGPoint = CGPoint(x: 100, y: 100)
     let red = UIColor.red
     let blue = UIColor.blue
@@ -40,7 +40,7 @@ class HeartRateView: UIView {
     
     private func heartRateDraw(){
         let heartRateDraw = UIBezierPath()
-        heartRateDraw.move(to: CGPoint(x: CGFloat(1.0), y: bounds.height/2))
+        heartRateDraw.move(to: CGPoint(x: CGFloat(0), y: bounds.height))
         var xTemp = CGFloat(1.0)
         let xIncrease = bounds.width/CGFloat(heartRateValue.count)*2/3
         for heartRate in heartRateValue{
@@ -62,11 +62,18 @@ class HeartRateView: UIView {
         
     }
     
-    private func heartRatePositionConverter(heartRateReading:Int) -> CGFloat {
-        let maxHeartRate = 255
-        let yIncrease = bounds.height/CGFloat(maxHeartRate)
+    func heartRatePositionConverter(heartRateReading:Int) -> CGFloat {
+        let maxHeartRate = higherHeartRateBound + 10
+        let minHeartRate = lowerHeartRateBound - 10
+        let yIncrease = bounds.height/CGFloat(maxHeartRate-minHeartRate)
         let lowerHeartRateBoundPosition = bounds.height
-        let heartRatePosition = lowerHeartRateBoundPosition - CGFloat(heartRateReading)*yIncrease
+        let heartRatePosition = lowerHeartRateBoundPosition - CGFloat(heartRateReading-minHeartRate)*yIncrease
+        if heartRateReading > maxHeartRate{
+            return CGFloat(0)
+        }
+        if heartRateReading < minHeartRate{
+            return bounds.height
+        }
         return heartRatePosition
     }
 

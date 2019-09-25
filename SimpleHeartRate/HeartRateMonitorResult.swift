@@ -10,7 +10,7 @@ import UIKit
 import CoreBluetooth
 
 
-class FirstViewController: UIViewController,CBCentralManagerDelegate,CBPeripheralDelegate {
+class HeartRateMonitorResult: UIViewController,CBCentralManagerDelegate,CBPeripheralDelegate {
     
     var manager:CBCentralManager!
     var scanResult = [CBPeripheral]()
@@ -21,11 +21,12 @@ class FirstViewController: UIViewController,CBCentralManagerDelegate,CBPeriphera
     var heartRateLabel:UILabel!
     var time:TimeInterval!
     var timeInRange:TimeInterval!
+    var higherBound:Int!
+    var lowerBound:Int!
     
     @IBOutlet weak var heartRatePlotView: HeartRateView!
     @IBOutlet weak var totalTime: UILabel!
     @IBOutlet weak var timeInHeartRateRange: UILabel!
-    
     
     
    
@@ -36,11 +37,14 @@ class FirstViewController: UIViewController,CBCentralManagerDelegate,CBPeriphera
         //set bluetooth manager
         manager = CBCentralManager(delegate: self, queue: nil, options: nil)
         //set heartRatePlotView's movable uilabel fro heart rate
-        heartRateLabel = UILabel(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
-        heartRateLabel.text = "No Reading"
-        heartRateLabel.font = UIFont.systemFont(ofSize: CGFloat(50))
+        heartRateLabel = UILabel(frame: CGRect(x: heartRatePlotView.bounds.width*0.7, y: heartRatePlotView.heartRatePositionConverter(heartRateReading: (heartRatePlotView.higherHeartRateBound + heartRatePlotView.lowerHeartRateBound)/2), width: 100, height: 100))
+        heartRateLabel.text = "None"
+        heartRateLabel.font = UIFont.systemFont(ofSize: CGFloat(35))
         heartRateLabel.textColor = .blue
         heartRatePlotView.addSubview(heartRateLabel)
+        heartRatePlotView.higherHeartRateBound = higherBound
+        heartRatePlotView.lowerHeartRateBound = lowerBound
+        
 
         
         
@@ -54,15 +58,8 @@ class FirstViewController: UIViewController,CBCentralManagerDelegate,CBPeriphera
         time = TimeInterval()
         timeInRange = TimeInterval()
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
-            //set normal timer
-            self.time += 1
-            self.totalTime.text = self.time.stringDisplay()
-            self.timeInHeartRateRange.text = self.timeInRange.stringDisplay()
-            //set heart rate timer
-            if self.heartRateReading < self.heartRatePlotView.higherHeartRateBound && self.heartRateReading > self.heartRatePlotView.lowerHeartRateBound{
-                self.timeInRange += 1
-            }
-            self.timeInHeartRateRange.text = self.timeInRange.stringDisplay()
+            self.updateTimer()
+            
         })
     }
     
@@ -112,12 +109,14 @@ class FirstViewController: UIViewController,CBCentralManagerDelegate,CBPeriphera
         print("didUpdateValueFor characteristic")
         heartRateReading = heartRate(from: characteristic)
         heartRatePlotView.heartRateValue.append(heartRateReading)
-        if heartRateReading > 0{
-            heartRateLabel.frame.origin.x = heartRatePlotView.newCGPoint.x
-            heartRateLabel.frame.origin.y = heartRatePlotView.newCGPoint.y
-            heartRateLabel.text = String(heartRateReading)
-            heartRatePlotView.setNeedsDisplay()
-        }
+//        if heartRateReading > 0{
+//            heartRateLabel.frame.origin.x = heartRatePlotView.newCGPoint.x
+//            heartRateLabel.frame.origin.y = heartRatePlotView.newCGPoint.y
+//            heartRateLabel.text = String(heartRateReading)
+//            heartRatePlotView.setNeedsDisplay()
+//        }
+        heartRateLabel.text = String(heartRateReading)
+        heartRatePlotView.setNeedsDisplay()
         switch heartRateReading{
         case 0..<heartRatePlotView.lowerHeartRateBound:
             heartRateLabel.textColor = .blue
@@ -147,7 +146,15 @@ class FirstViewController: UIViewController,CBCentralManagerDelegate,CBPeriphera
     }
     
     private func updateTimer(){
-        
+        //set normal timer
+        self.time += 1
+        self.totalTime.text = self.time.stringDisplay()
+        self.timeInHeartRateRange.text = self.timeInRange.stringDisplay()
+        //set heart rate timer
+        if self.heartRateReading < self.heartRatePlotView.higherHeartRateBound && self.heartRateReading > self.heartRatePlotView.lowerHeartRateBound{
+            self.timeInRange += 1
+        }
+        self.timeInHeartRateRange.text = self.timeInRange.stringDisplay()
     }
     
 

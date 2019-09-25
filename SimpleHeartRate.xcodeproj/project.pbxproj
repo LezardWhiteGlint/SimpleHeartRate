@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		F987ACD5233073A600B63357 /* HeartRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987ACD4233073A600B63357 /* HeartRateView.swift */; };
+		F99366842339DA3800D1D9F5 /* SetUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99366832339DA3800D1D9F5 /* SetUpViewController.swift */; };
 		F9C647AE22FFF13C009F00E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C647AD22FFF13C009F00E7 /* AppDelegate.swift */; };
-		F9C647B022FFF13C009F00E7 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C647AF22FFF13C009F00E7 /* FirstViewController.swift */; };
-		F9C647B222FFF13C009F00E7 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C647B122FFF13C009F00E7 /* SecondViewController.swift */; };
+		F9C647B022FFF13C009F00E7 /* HeartRateMonitorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C647AF22FFF13C009F00E7 /* HeartRateMonitorResult.swift */; };
 		F9C647B522FFF13C009F00E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9C647B322FFF13C009F00E7 /* Main.storyboard */; };
 		F9C647B722FFF13E009F00E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9C647B622FFF13E009F00E7 /* Assets.xcassets */; };
 		F9C647BA22FFF13E009F00E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9C647B822FFF13E009F00E7 /* LaunchScreen.storyboard */; };
@@ -18,10 +18,10 @@
 
 /* Begin PBXFileReference section */
 		F987ACD4233073A600B63357 /* HeartRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateView.swift; sourceTree = "<group>"; };
+		F99366832339DA3800D1D9F5 /* SetUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpViewController.swift; sourceTree = "<group>"; };
 		F9C647AA22FFF13C009F00E7 /* SimpleHeartRate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleHeartRate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9C647AD22FFF13C009F00E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F9C647AF22FFF13C009F00E7 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		F9C647B122FFF13C009F00E7 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		F9C647AF22FFF13C009F00E7 /* HeartRateMonitorResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateMonitorResult.swift; sourceTree = "<group>"; };
 		F9C647B422FFF13C009F00E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F9C647B622FFF13E009F00E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F9C647B922FFF13E009F00E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,9 +59,9 @@
 			isa = PBXGroup;
 			children = (
 				F9C647AD22FFF13C009F00E7 /* AppDelegate.swift */,
-				F9C647AF22FFF13C009F00E7 /* FirstViewController.swift */,
-				F9C647B122FFF13C009F00E7 /* SecondViewController.swift */,
+				F9C647AF22FFF13C009F00E7 /* HeartRateMonitorResult.swift */,
 				F987ACD4233073A600B63357 /* HeartRateView.swift */,
+				F99366832339DA3800D1D9F5 /* SetUpViewController.swift */,
 				F9C647B322FFF13C009F00E7 /* Main.storyboard */,
 				F9C647B622FFF13E009F00E7 /* Assets.xcassets */,
 				F9C647B822FFF13E009F00E7 /* LaunchScreen.storyboard */,
@@ -141,10 +141,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9C647B222FFF13C009F00E7 /* SecondViewController.swift in Sources */,
+				F99366842339DA3800D1D9F5 /* SetUpViewController.swift in Sources */,
 				F987ACD5233073A600B63357 /* HeartRateView.swift in Sources */,
 				F9C647AE22FFF13C009F00E7 /* AppDelegate.swift in Sources */,
-				F9C647B022FFF13C009F00E7 /* FirstViewController.swift in Sources */,
+				F9C647B022FFF13C009F00E7 /* HeartRateMonitorResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +293,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AV64Q6NXM9;
 				INFOPLIST_FILE = SimpleHeartRate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -311,6 +312,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AV64Q6NXM9;
 				INFOPLIST_FILE = SimpleHeartRate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
