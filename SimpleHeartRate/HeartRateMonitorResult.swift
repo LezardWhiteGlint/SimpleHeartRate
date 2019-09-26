@@ -78,7 +78,7 @@ class HeartRateMonitorResult: UIViewController,CBCentralManagerDelegate,CBPeriph
             heartRatePeripheral = peripheral
             heartRatePeripheral.delegate = self
             manager.connect(heartRatePeripheral, options: nil)
-            NSLog("scanning stopped")
+            
             
         }
     }
@@ -86,6 +86,7 @@ class HeartRateMonitorResult: UIViewController,CBCentralManagerDelegate,CBPeriph
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         NSLog("connection successful "+(peripheral.name ?? "unkown device"))
         manager.stopScan()
+        NSLog("scanning stopped")
         heartRatePeripheral.discoverServices([heartRateServiceCBUUID])
     }
     
