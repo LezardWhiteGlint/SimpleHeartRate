@@ -21,6 +21,7 @@ class HeartRateMonitorResult: UIViewController,CBCentralManagerDelegate,CBPeriph
     var heartRateLabel:UILabel!
     var time:TimeInterval!
     var timeInRange:TimeInterval!
+    var timer = Timer()
     var higherBound:Int!
     var lowerBound:Int!
     
@@ -45,6 +46,7 @@ class HeartRateMonitorResult: UIViewController,CBCentralManagerDelegate,CBPeriph
         heartRatePlotView.higherHeartRateBound = higherBound
         heartRatePlotView.lowerHeartRateBound = lowerBound
         
+        
 
         
         
@@ -54,13 +56,32 @@ class HeartRateMonitorResult: UIViewController,CBCentralManagerDelegate,CBPeriph
     
     
      //MARK:Actions
-    @IBAction func start(_ sender: Any) {
-        time = TimeInterval()
-        timeInRange = TimeInterval()
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
+    @IBAction func start(_ sender: UIButton) {
+        switch sender.currentTitle {
+        case "Start":
+            //start the timer
+            time = TimeInterval()
+            timeInRange = TimeInterval()
+            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
+                self.updateTimer()
+            })
+            sender.setTitle("Pause", for: .normal)
+            sender.backgroundColor = .red
+        case "Pause":
+            timer.invalidate()
+            sender.setTitle("Resume", for: .normal)
+            sender.backgroundColor = .green
+        case "Resume":
+            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
             self.updateTimer()
-            
-        })
+            })
+            sender.setTitle("Pause", for: .normal)
+            sender.backgroundColor = .red
+        default:
+            print("Error")
+        }
+        
+
     }
     
     
@@ -68,6 +89,7 @@ class HeartRateMonitorResult: UIViewController,CBCentralManagerDelegate,CBPeriph
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         NSLog("centralManagerDidUpdate")
         manager.scanForPeripherals(withServices: [heartRateServiceCBUUID], options: nil)
+        
     }
     
     

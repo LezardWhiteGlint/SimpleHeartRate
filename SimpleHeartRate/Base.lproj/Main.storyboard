@@ -173,11 +173,11 @@
                                 <rect key="frame" x="8" y="8" width="304" height="532"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SGL-54-nk7" customClass="HeartRateView" customModule="SimpleHeartRate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="304" height="437"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="304" height="376"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="jxh-57-hGK">
-                                        <rect key="frame" x="0.0" y="439" width="304" height="93"/>
+                                        <rect key="frame" x="0.0" y="378" width="304" height="154"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="113" translatesAutoresizingMaskIntoConstraints="NO" id="HUN-v5-XNd">
                                                 <rect key="frame" x="0.0" y="0.0" width="304" height="20.5"/>
@@ -236,53 +236,29 @@
                                                     <constraint firstItem="sWP-u8-l8T" firstAttribute="top" secondItem="2Ko-aM-bJC" secondAttribute="top" id="oCJ-85-hpZ"/>
                                                 </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="178" translatesAutoresizingMaskIntoConstraints="NO" id="J0s-Fz-btH">
-                                                <rect key="frame" x="0.0" y="63" width="304" height="30"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9br-wY-RgW">
-                                                        <rect key="frame" x="0.0" y="0.0" width="47" height="30"/>
-                                                        <state key="normal" title="Device"/>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjt-5U-3zs">
-                                                        <rect key="frame" x="225" y="0.0" width="79" height="30"/>
-                                                        <state key="normal" title="Start"/>
-                                                        <connections>
-                                                            <action selector="start:" destination="9pv-A4-QxB" eventType="touchUpInside" id="eYK-ar-Eca"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="bjt-5U-3zs" secondAttribute="trailing" id="86E-AI-mhF"/>
-                                                    <constraint firstItem="bjt-5U-3zs" firstAttribute="top" secondItem="J0s-Fz-btH" secondAttribute="top" id="9BP-Yg-bUl"/>
-                                                    <constraint firstAttribute="bottom" secondItem="bjt-5U-3zs" secondAttribute="bottom" id="J5Q-Uu-i1x"/>
-                                                    <constraint firstItem="9br-wY-RgW" firstAttribute="top" secondItem="J0s-Fz-btH" secondAttribute="top" id="SLw-iO-gQJ"/>
-                                                    <constraint firstItem="9br-wY-RgW" firstAttribute="leading" secondItem="J0s-Fz-btH" secondAttribute="leading" id="VM7-of-pgZ"/>
-                                                    <constraint firstAttribute="bottom" secondItem="9br-wY-RgW" secondAttribute="bottom" id="YHV-1d-SWb"/>
-                                                </constraints>
-                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjt-5U-3zs">
+                                                <rect key="frame" x="0.0" y="63" width="304" height="91"/>
+                                                <state key="normal" title="Start"/>
+                                                <connections>
+                                                    <action selector="start:" destination="9pv-A4-QxB" eventType="touchUpInside" id="eYK-ar-Eca"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="J0s-Fz-btH" firstAttribute="leading" secondItem="jxh-57-hGK" secondAttribute="leading" id="672-3k-UZT"/>
                                             <constraint firstItem="2Ko-aM-bJC" firstAttribute="leading" secondItem="jxh-57-hGK" secondAttribute="leading" id="6rT-Iv-f8p"/>
                                             <constraint firstItem="HUN-v5-XNd" firstAttribute="leading" secondItem="jxh-57-hGK" secondAttribute="leading" id="ELM-Qe-K6Y"/>
-                                            <constraint firstItem="HUN-v5-XNd" firstAttribute="top" secondItem="jxh-57-hGK" secondAttribute="top" id="Iqh-0G-3lR"/>
-                                            <constraint firstAttribute="trailing" secondItem="J0s-Fz-btH" secondAttribute="trailing" id="It4-Hn-t4t"/>
                                             <constraint firstAttribute="trailing" secondItem="HUN-v5-XNd" secondAttribute="trailing" id="NMJ-ER-q8p"/>
                                             <constraint firstAttribute="trailing" secondItem="2Ko-aM-bJC" secondAttribute="trailing" id="NsJ-u3-GRO"/>
-                                            <constraint firstAttribute="bottom" secondItem="J0s-Fz-btH" secondAttribute="bottom" id="vvn-sv-lh3"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="jxh-57-hGK" firstAttribute="top" secondItem="SGL-54-nk7" secondAttribute="bottom" constant="2" id="1wE-L6-MBg"/>
                                     <constraint firstItem="jxh-57-hGK" firstAttribute="leading" secondItem="z5k-1Q-m9V" secondAttribute="leading" id="2iu-V6-fLD"/>
                                     <constraint firstAttribute="trailing" secondItem="jxh-57-hGK" secondAttribute="trailing" id="5rN-aK-NVS"/>
                                     <constraint firstItem="SGL-54-nk7" firstAttribute="leading" secondItem="z5k-1Q-m9V" secondAttribute="leading" id="9Ak-XV-WeF"/>
                                     <constraint firstItem="SGL-54-nk7" firstAttribute="top" secondItem="z5k-1Q-m9V" secondAttribute="top" id="PmK-tZ-gsr"/>
-                                    <constraint firstAttribute="bottom" secondItem="jxh-57-hGK" secondAttribute="bottom" id="Zva-qd-EK5"/>
                                     <constraint firstAttribute="trailing" secondItem="SGL-54-nk7" secondAttribute="trailing" id="u37-E6-Qr6"/>
                                 </constraints>
                             </stackView>
