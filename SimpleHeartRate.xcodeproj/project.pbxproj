@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F987ACD5233073A600B63357 /* HeartRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987ACD4233073A600B63357 /* HeartRateView.swift */; };
 		F99366842339DA3800D1D9F5 /* SetUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99366832339DA3800D1D9F5 /* SetUpViewController.swift */; };
+		F9C3214E234DAB3800F0907F /* BluetoothListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C3214D234DAB3800F0907F /* BluetoothListTableViewController.swift */; };
+		F9C32150234DABA100F0907F /* BluetoothListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C3214F234DABA100F0907F /* BluetoothListTableViewCell.swift */; };
 		F9C647AE22FFF13C009F00E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C647AD22FFF13C009F00E7 /* AppDelegate.swift */; };
 		F9C647B022FFF13C009F00E7 /* HeartRateMonitorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C647AF22FFF13C009F00E7 /* HeartRateMonitorResult.swift */; };
 		F9C647B522FFF13C009F00E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9C647B322FFF13C009F00E7 /* Main.storyboard */; };
@@ -19,6 +21,8 @@
 /* Begin PBXFileReference section */
 		F987ACD4233073A600B63357 /* HeartRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateView.swift; sourceTree = "<group>"; };
 		F99366832339DA3800D1D9F5 /* SetUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpViewController.swift; sourceTree = "<group>"; };
+		F9C3214D234DAB3800F0907F /* BluetoothListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothListTableViewController.swift; sourceTree = "<group>"; };
+		F9C3214F234DABA100F0907F /* BluetoothListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothListTableViewCell.swift; sourceTree = "<group>"; };
 		F9C647AA22FFF13C009F00E7 /* SimpleHeartRate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleHeartRate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9C647AD22FFF13C009F00E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9C647AF22FFF13C009F00E7 /* HeartRateMonitorResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateMonitorResult.swift; sourceTree = "<group>"; };
@@ -62,6 +66,8 @@
 				F9C647AF22FFF13C009F00E7 /* HeartRateMonitorResult.swift */,
 				F987ACD4233073A600B63357 /* HeartRateView.swift */,
 				F99366832339DA3800D1D9F5 /* SetUpViewController.swift */,
+				F9C3214D234DAB3800F0907F /* BluetoothListTableViewController.swift */,
+				F9C3214F234DABA100F0907F /* BluetoothListTableViewCell.swift */,
 				F9C647B322FFF13C009F00E7 /* Main.storyboard */,
 				F9C647B622FFF13E009F00E7 /* Assets.xcassets */,
 				F9C647B822FFF13E009F00E7 /* LaunchScreen.storyboard */,
@@ -143,6 +149,8 @@
 			files = (
 				F99366842339DA3800D1D9F5 /* SetUpViewController.swift in Sources */,
 				F987ACD5233073A600B63357 /* HeartRateView.swift in Sources */,
+				F9C32150234DABA100F0907F /* BluetoothListTableViewCell.swift in Sources */,
+				F9C3214E234DAB3800F0907F /* BluetoothListTableViewController.swift in Sources */,
 				F9C647AE22FFF13C009F00E7 /* AppDelegate.swift in Sources */,
 				F9C647B022FFF13C009F00E7 /* HeartRateMonitorResult.swift in Sources */,
 			);

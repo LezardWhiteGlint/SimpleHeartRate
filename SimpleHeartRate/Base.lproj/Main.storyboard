@@ -99,6 +99,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3c3-Sh-LTd">
                                                 <rect key="frame" x="20" y="20" width="114" height="92"/>
                                                 <state key="normal" title="Device"/>
+                                                <connections>
+                                                    <segue destination="gXd-7C-arv" kind="show" id="d48-nx-lhu"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -284,6 +287,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="749.27536231884062" y="-320.08928571428572"/>
+        </scene>
+        <!--Bluetooth List Table View Controller-->
+        <scene sceneID="RpN-7q-j58">
+            <objects>
+                <tableViewController id="gXd-7C-arv" customClass="BluetoothListTableViewController" customModule="SimpleHeartRate" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="xid-eE-g0G">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BluetoothDevice" id="oil-zL-iC2" customClass="BluetoothListTableViewCell" customModule="SimpleHeartRate" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="71.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oil-zL-iC2" id="lfj-kb-fb9">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="71.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="197" translatesAutoresizingMaskIntoConstraints="NO" id="j3d-5f-BOj">
+                                            <rect key="frame" x="20" y="20" width="280" height="31.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XW-DV-jVh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="42" height="31.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fmp-vw-8IS">
+                                                    <rect key="frame" x="239" y="0.0" width="43" height="31.5"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="2XW-DV-jVh" firstAttribute="top" secondItem="j3d-5f-BOj" secondAttribute="top" id="3qa-Eg-qUZ"/>
+                                                <constraint firstItem="2XW-DV-jVh" firstAttribute="leading" secondItem="j3d-5f-BOj" secondAttribute="leading" id="6MZ-6a-dzd"/>
+                                                <constraint firstAttribute="bottom" secondItem="Fmp-vw-8IS" secondAttribute="bottom" id="70Q-x4-Ita"/>
+                                                <constraint firstAttribute="bottom" secondItem="2XW-DV-jVh" secondAttribute="bottom" id="9eH-Th-1PC"/>
+                                                <constraint firstAttribute="trailing" secondItem="Fmp-vw-8IS" secondAttribute="trailing" id="Sh0-v1-Ss7"/>
+                                                <constraint firstItem="Fmp-vw-8IS" firstAttribute="top" secondItem="j3d-5f-BOj" secondAttribute="top" id="tJx-NS-MzG"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="j3d-5f-BOj" firstAttribute="leading" secondItem="lfj-kb-fb9" secondAttribute="leading" constant="20" symbolic="YES" id="M34-5I-IIY"/>
+                                        <constraint firstAttribute="trailing" secondItem="j3d-5f-BOj" secondAttribute="trailing" constant="20" symbolic="YES" id="Vb0-XH-rYc"/>
+                                        <constraint firstAttribute="bottom" secondItem="j3d-5f-BOj" secondAttribute="bottom" constant="20" symbolic="YES" id="Yg5-TH-XeB"/>
+                                        <constraint firstItem="j3d-5f-BOj" firstAttribute="top" secondItem="lfj-kb-fb9" secondAttribute="top" constant="20" symbolic="YES" id="u0w-eV-WEb"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="bluetoothDeviceName" destination="2XW-DV-jVh" id="SmK-wM-XB5"/>
+                                    <outlet property="status" destination="Fmp-vw-8IS" id="hTS-gB-o2T"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gXd-7C-arv" id="xix-bb-nxn"/>
+                            <outlet property="delegate" destination="gXd-7C-arv" id="LGN-fE-Jr0"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="oag-OP-lbe"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XG7-vv-HXV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="724" y="451"/>
         </scene>
     </scenes>
     <resources>
