@@ -38,20 +38,27 @@ class HeartRateMonitorResult: UIViewController,CBCentralManagerDelegate,CBPeriph
         //set bluetooth manager
         manager = CBCentralManager(delegate: self, queue: nil, options: nil)
         //set heartRatePlotView's movable uilabel fro heart rate
-        heartRateLabel = UILabel(frame: CGRect(x: heartRatePlotView.bounds.width*0.7, y: heartRatePlotView.heartRatePositionConverter(heartRateReading: (heartRatePlotView.higherHeartRateBound + heartRatePlotView.lowerHeartRateBound)/2), width: 100, height: 100))
+        heartRateLabel = UILabel(frame: CGRect(x: heartRatePlotView.bounds.width*0.7, y: heartRatePlotView.bounds.height*0.5, width: 100, height: 100))
         heartRateLabel.text = "None"
         heartRateLabel.font = UIFont.systemFont(ofSize: CGFloat(35))
         heartRateLabel.textColor = .blue
         heartRatePlotView.addSubview(heartRateLabel)
         heartRatePlotView.higherHeartRateBound = higherBound
         heartRatePlotView.lowerHeartRateBound = lowerBound
+        //Keep the screen awake when using
+        UIApplication.shared.isIdleTimerDisabled = true
+        
+
+        
         
         
 
-        
-        
-        
-
+    }
+    
+    //change the heartRateLabel location when screen orientation changes
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+            heartRateLabel.frame.origin = CGPoint(x: heartRatePlotView.bounds.height*0.7, y: heartRatePlotView.bounds.width*0.5)
     }
     
     
