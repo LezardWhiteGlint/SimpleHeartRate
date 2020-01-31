@@ -35,7 +35,7 @@ class HeartRateView: UIView {
         heartRateLowerBoundPath.stroke()
         //set heart rate
         heartRateDraw()
-        //TODO: change color when in different zone, set initial setting
+        //TODO-DONE: change color when in different zone, set initial setting
     }
     
     private func heartRateDraw(){

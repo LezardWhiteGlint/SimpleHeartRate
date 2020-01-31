@@ -26,7 +26,8 @@ class BluetoothListTableViewController:UITableViewController,CBCentralManagerDel
     
     //Get bluetooth device list
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        manager.scanForPeripherals(withServices: [heartRateServiceCBUUID], options: nil)
+//        manager.scanForPeripherals(withServices: [heartRateServiceCBUUID], options: nil)
+        manager.scanForPeripherals(withServices: nil, options: nil)
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
@@ -46,7 +47,11 @@ class BluetoothListTableViewController:UITableViewController,CBCentralManagerDel
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "BluetoothDevice", for: indexPath) as? BluetoothListTableViewCell else {fatalError("Cell doesn't exist")}
         cell.bluetoothDeviceName.text = scanResult[indexPath.row].name
-        cell.status.isOn = true
+        if scanResult[indexPath.row].state.rawValue == 0{
+            cell.status.isOn = false}
+        else{
+            cell.status.isOn = true
+        }
         return cell
     }
     

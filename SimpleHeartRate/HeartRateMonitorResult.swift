@@ -22,8 +22,8 @@ class HeartRateMonitorResult: UIViewController,CBCentralManagerDelegate,CBPeriph
     var time:TimeInterval!
     var timeInRange:TimeInterval!
     var timer = Timer()
-    var higherBound:Int!
-    var lowerBound:Int!
+    var higherBound:Int?
+    var lowerBound:Int?
     
     @IBOutlet weak var heartRatePlotView: HeartRateView!
     @IBOutlet weak var totalTime: UILabel!
@@ -43,8 +43,8 @@ class HeartRateMonitorResult: UIViewController,CBCentralManagerDelegate,CBPeriph
         heartRateLabel.font = UIFont.systemFont(ofSize: CGFloat(35))
         heartRateLabel.textColor = .blue
         heartRatePlotView.addSubview(heartRateLabel)
-        heartRatePlotView.higherHeartRateBound = higherBound
-        heartRatePlotView.lowerHeartRateBound = lowerBound
+        heartRatePlotView.higherHeartRateBound = higherBound ?? 140
+        heartRatePlotView.lowerHeartRateBound = lowerBound ?? 100
         //Keep the screen awake when using
         UIApplication.shared.isIdleTimerDisabled = true
         
